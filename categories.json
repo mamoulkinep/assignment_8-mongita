@@ -1,0 +1,22 @@
+[
+  {
+    "categoryId": 1,
+    "categoryName": "Fiction",
+    "categoryImage": "fiction-category.jpg"
+  },
+  {
+    "categoryId": 2,
+    "categoryName": "Science Fiction",
+    "categoryImage": "science-fiction-category.jpg"
+  },
+  {
+    "categoryId": 3,
+    "categoryName": "History",
+    "categoryImage": "history-category.jpg"
+  },
+  {
+    "categoryId": 4,
+    "categoryName": "Business",
+    "categoryImage": "business-category.jpg"
+  }
+]
