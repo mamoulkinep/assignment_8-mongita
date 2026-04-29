@@ -1,1 +1,44 @@
+{% extends 'base.html' %}
 
+{% block container %}
+<section id="catRight" style="width:100%; display:block;">
+    <h1 style="margin:20px;">All Books</h1>
+
+    <a class="commandButton" href="{{ url_for('create') }}">Create New Book</a>
+
+    <table style="width:95%; margin:20px; border-collapse:collapse; background:white;">
+        <tr style="background-color:#fff9fc;">
+            <th style="border:1px solid #ccc; padding:8px;">Image</th>
+            <th style="border:1px solid #ccc; padding:8px;">Title</th>
+            <th style="border:1px solid #ccc; padding:8px;">Author</th>
+            <th style="border:1px solid #ccc; padding:8px;">ISBN</th>
+            <th style="border:1px solid #ccc; padding:8px;">Category</th>
+            <th style="border:1px solid #ccc; padding:8px;">Price</th>
+            <th style="border:1px solid #ccc; padding:8px;">Read Now</th>
+            <th style="border:1px solid #ccc; padding:8px;">Actions</th>
+        </tr>
+
+        {% for book in books %}
+        <tr>
+            <td style="border:1px solid #ccc; padding:8px; text-align:center;">
+                <img src="{{ url_for('static', filename='images/books/' + book['image']) }}"
+                     alt="{{ book['title'] }}"
+                     style="width:70px;">
+            </td>
+            <td style="border:1px solid #ccc; padding:8px;">{{ book['title'] }}</td>
+            <td style="border:1px solid #ccc; padding:8px;">{{ book['author'] }}</td>
+            <td style="border:1px solid #ccc; padding:8px;">{{ book['isbn'] }}</td>
+            <td style="border:1px solid #ccc; padding:8px;">{{ book['categoryName'] }}</td>
+            <td style="border:1px solid #ccc; padding:8px;">${{ '%.2f'|format(book['price']) }}</td>
+            <td style="border:1px solid #ccc; padding:8px; text-align:center;">{{ book['readNow'] }}</td>
+            <td style="border:1px solid #ccc; padding:8px;">
+                <a class="actionButton" href="{{ url_for('edit', id=book['bookId']) }}">Edit</a>
+                <a class="actionButton"
+                   href="{{ url_for('delete', id=book['bookId']) }}"
+                   onclick="return confirm('Delete this book?');">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}
